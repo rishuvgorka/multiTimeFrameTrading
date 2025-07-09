@@ -7,10 +7,10 @@ class BinanceClient:
     def __init__(self, symbol = 'BTCUSDT'):
         self.symbol = symbol
 
-    def _sign():
+    def _sign(self, params):
         return hmac.new(API_SECRET.encode(), urlencode(params).encode(), hashlib.sha256).hexdigest()
 
-    def get_klines():
+    def get_klines(self, interval, limit = 100):
         url = f"{BASE_URL}/v3/klines"
         params = {"symbol": self.symbol, "interval": interval, "limit": limit}
         r = requests.get(url, params=params)
@@ -23,11 +23,11 @@ class BinanceClient:
         df = df[['open','high','low','close','volume']].astype(float)
         return df
 
-    def get_prices():
+    def get_price(self):
         r = requests.get(f"{BASE_URL}/v3/ticker/price", params={"symbol": self.symbol})
         return float(r.json()["price"])
 
-    def get_balance():
+    def get_balance(self, asset = 'USDT'):
         ts = int(time.time() * 1000)
         params = {'timestamp': ts}
         params['signature'] = self._sign(params)
@@ -40,7 +40,7 @@ class BinanceClient:
         return 0.0
 
 
-    def place_market_order():
+    def place_market_order(self, side, quantity):
         ts = int(time.time() * 1000)
         params = {
             'symbol': self.symbol,
