@@ -29,7 +29,7 @@ multiTimeFrameTrading/
 ├── fetchData.py              # Fetch and prepare OHLCV data
 ├── strategy.py               # Strategy class with signal logic
 ├── MultiTimeFrameStrategy.html  # HTML report/output
-├── log.txt                   # Trade logging file
+├── log.txt                   # optional file when you run live_trading in the background
 ├── live_trading.py          # Live trading logic for Binance Testnet
 ├── .gitignore
 ├── binance_client.py        # Binance API client setup
@@ -38,7 +38,7 @@ multiTimeFrameTrading/
 └── ouFiles/                 # Store the trade log for backtest and live trading
      ├── backtestTrades.csv  # Trade log for backtesting
      ├── live_trades.csv     # Trade log for live trading
-     └── position.csv        #
+     └── position.csv        # tracks the current or historical positions
 ```
 
 ---
