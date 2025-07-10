@@ -31,10 +31,10 @@ def fetch_klines(symbol, interval, start_ts, end_ts, limit=1000):
     df = df[['Open', 'High', 'Low', 'Close', 'Volume']].astype(float)
     return df
 
-# Time range for ~90 days
+
 symbol = "BTCUSDT"
 end = int(time.time() * 1000)
-start = end - 90 * 24 * 60 * 60 * 1000  # 90 days in ms
+start = end - 24 * 60 * 60 * 1000  
 
 #downloading 15m data
 print("Fetching 15m data...")
